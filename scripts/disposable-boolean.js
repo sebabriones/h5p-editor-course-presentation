@@ -1,4 +1,4 @@
-/*global ns*/
+﻿/*global ns*/
 // Create a new editor widget for boolean fields
 ns.widgets.disposableBoolean = (function ($, EventDispatcher) {
 
@@ -43,9 +43,9 @@ ns.widgets.disposableBoolean = (function ($, EventDispatcher) {
 
       var $input = $element.find('input').on('change', function () {
         const confirmationDialog = new H5P.ConfirmationDialog({
-          headerText: H5PEditor.t('H5PEditor.CoursePresentation', 'activeSurfaceWarning'),
-          cancelText: H5PEditor.t('H5PEditor.CoursePresentation', 'cancel'),
-          confirmText: H5PEditor.t('H5PEditor.CoursePresentation', 'ok'),
+          headerText: H5PEditor.t('H5PEditor.CoursePresentationCFRD', 'activeSurfaceWarning'),
+          cancelText: H5PEditor.t('H5PEditor.CoursePresentationCFRD', 'cancel'),
+          confirmText: H5PEditor.t('H5PEditor.CoursePresentationCFRD', 'ok'),
         }).appendTo(document.body);
 
         confirmationDialog.show($element.offset().top);

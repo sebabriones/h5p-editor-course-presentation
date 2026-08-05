@@ -1,4 +1,4 @@
-.h5peditor-form .field.coursepresentation,
+﻿.h5peditor-form .field.coursepresentation,
 .editor.h5p-course-presentation {
   position: relative;
 }
@@ -329,7 +329,7 @@
   height: 100%;
 }
 
-.h5p-coursepresentation-editor .h5p-course-presentation .h5p-element {
+:is(.h5p-coursepresentation-editor, .h5p-coursepresentationcfrd-editor) .h5p-course-presentation .h5p-element {
   overflow: visible;
 }
 
@@ -472,28 +472,28 @@
   color: #9b9b9b;
 }
 
-.h5p-coursepresentation-editor .h5p-element.h5p-element-button-wrapper.focused {
+:is(.h5p-coursepresentation-editor, .h5p-coursepresentationcfrd-editor) .h5p-element.h5p-element-button-wrapper.focused {
   outline: 1px solid #0099ff;
   outline-offset: -1px;
 }
 
-.h5p-coursepresentation-editor .h5p-element.h5p-element-button-wrapper .h5p-element-button {
+:is(.h5p-coursepresentation-editor, .h5p-coursepresentationcfrd-editor) .h5p-element.h5p-element-button-wrapper .h5p-element-button {
   transition: none;
 }
 
-.h5p-coursepresentation-editor .h5p-element.h5p-element-button-wrapper .h5p-element-button:hover {
+:is(.h5p-coursepresentation-editor, .h5p-coursepresentationcfrd-editor) .h5p-element.h5p-element-button-wrapper .h5p-element-button:hover {
   -webkit-transform: none;
   transform: none;
 }
 
-.h5p-coursepresentation-editor .h5p-course-presentation a.h5p-element-button:focus {
+:is(.h5p-coursepresentation-editor, .h5p-coursepresentationcfrd-editor) .h5p-course-presentation a.h5p-element-button:focus {
   -webkit-box-shadow: 0.15em 0.25em 0.25em 0 #191919;
   -moz-box-shadow: 0.15em 0.25em 0.25em 0 #191919;
   box-shadow: 0.15em 0.25em 0.25em 0 #191919;
 }
 
-.h5p-coursepresentation-editor .h5p-course-presentation .h5p-element.h5p-element-button-wrapper:focus,
-.h5p-coursepresentation-editor .h5p-course-presentation .h5p-element.h5p-element-button-wrapper.focused {
+:is(.h5p-coursepresentation-editor, .h5p-coursepresentationcfrd-editor) .h5p-course-presentation .h5p-element.h5p-element-button-wrapper:focus,
+:is(.h5p-coursepresentation-editor, .h5p-coursepresentationcfrd-editor) .h5p-course-presentation .h5p-element.h5p-element-button-wrapper.focused {
   border: 0;
 }
 
@@ -501,11 +501,11 @@
   display: none;
 }
 
-.h5p-coursepresentation-editor .h5p-progressbar {
+:is(.h5p-coursepresentation-editor, .h5p-coursepresentationcfrd-editor) .h5p-progressbar {
   background-color: #fff;
 }
 
-.h5p-coursepresentation-editor .h5p-progressbar-part {
+:is(.h5p-coursepresentation-editor, .h5p-coursepresentationcfrd-editor) .h5p-progressbar-part {
   position: relative;
   margin: 0 1px;
 }
@@ -514,36 +514,36 @@
   transition: transform 0.3s linear;
 }
 
-.h5p-coursepresentation-editor .h5p-progressbar-part:first-child {
+:is(.h5p-coursepresentation-editor, .h5p-coursepresentationcfrd-editor) .h5p-progressbar-part:first-child {
   margin-left: 0;
 }
 
-.h5p-coursepresentation-editor .h5p-progressbar-part:last-child {
+:is(.h5p-coursepresentation-editor, .h5p-coursepresentationcfrd-editor) .h5p-progressbar-part:last-child {
   margin-right: 0;
 }
 
-.h5p-coursepresentation-editor .h5p-progressbar-part-selected {
+:is(.h5p-coursepresentation-editor, .h5p-coursepresentationcfrd-editor) .h5p-progressbar-part-selected {
   z-index: 1;
 }
 
-.h5p-coursepresentation-editor .h5p-progressbar-part:not(.h5p-progressbar-part-selected) {
+:is(.h5p-coursepresentation-editor, .h5p-coursepresentationcfrd-editor) .h5p-progressbar-part:not(.h5p-progressbar-part-selected) {
   background: #666;
 }
 
-.h5p-coursepresentation-editor .h5p-hidden2 {
+:is(.h5p-coursepresentation-editor, .h5p-coursepresentationcfrd-editor) .h5p-hidden2 {
   display: none;
 }
 
-.h5p-coursepresentation-editor .field-name-buttonSize label {
+:is(.h5p-coursepresentation-editor, .h5p-coursepresentationcfrd-editor) .field-name-buttonSize label {
   display: inline-block;
   margin-right: 0.5em;
 }
 
-.h5p-coursepresentation-editor .h5p-hidden {
+:is(.h5p-coursepresentation-editor, .h5p-coursepresentationcfrd-editor) .h5p-hidden {
   visibility: hidden;
 }
 
-.h5p-coursepresentation-editor > .h5peditor-semi-fullscreen .form-manager-head.form-manager-footer {
+:is(.h5p-coursepresentation-editor, .h5p-coursepresentationcfrd-editor) > .h5peditor-semi-fullscreen .form-manager-head.form-manager-footer {
   position: relative;
   top: auto;
   left: auto;
@@ -557,20 +557,20 @@
   box-sizing: content-box;
 }
 
-.h5p-coursepresentation-editor .h5p-multi-media-choice-option-list {
+:is(.h5p-coursepresentation-editor, .h5p-coursepresentationcfrd-editor) .h5p-multi-media-choice-option-list {
   margin-bottom: 0;
   margin-top: 0;
 }
 
-.h5p-coursepresentation-editor .h5p-course-presentation .h5p-course-presentation-active-surface {
+:is(.h5p-coursepresentation-editor, .h5p-coursepresentationcfrd-editor) .h5p-course-presentation .h5p-course-presentation-active-surface {
   margin-bottom: 3em;
 }
-.h5p-coursepresentation-editor .h5p-course-presentation .h5p-course-presentation-active-surface .h5p-footer {
+:is(.h5p-coursepresentation-editor, .h5p-coursepresentationcfrd-editor) .h5p-course-presentation .h5p-course-presentation-active-surface .h5p-footer {
   position: absolute;
   top: 100%;
   background-color: transparent;
 }
-.h5p-coursepresentation-editor .h5p-course-presentation .h5p-course-presentation-active-surface .h5p-slidecontrols {
+:is(.h5p-coursepresentation-editor, .h5p-coursepresentationcfrd-editor) .h5p-course-presentation .h5p-course-presentation-active-surface .h5p-slidecontrols {
   bottom: auto;
   top: 100%;
 }
