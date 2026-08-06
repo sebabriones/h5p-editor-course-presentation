@@ -164,7 +164,7 @@ H5PEditor.CoursePresentationCFRD.prototype.addElement = function (library, optio
           elementParams.action.params.fitToWrapper = true;
           break;
 
-        case 'H5P.DragQuestion':
+        case 'H5P.DragQuestionCFRD':
           elementParams.width = 50;
           elementParams.height = 50;
           break;
@@ -1515,6 +1515,10 @@ H5PEditor.CoursePresentationCFRD.prototype.generateForm = function (elementParam
   var library = element.children[4];
   if (!(library instanceof H5PEditor.None)) {
     var libraryChange = function () {
+      if (!library.children || !library.children[0] || !library.children[0].field) {
+        return;
+      }
+
       if (library.children[0].field.type === 'image') {
         library.children[0].changes.push(function (params) {
           self.setImageSize(element, elementParams, params);
@@ -2098,7 +2102,9 @@ H5PEditor.CoursePresentationCFRD.prototype.redrawElement = function ($wrapper, e
   // Determine how many elements still need redrawal after this one
   repeat = (typeof repeat === 'undefined') ? elements.length - 1 - elementIndex : repeat;
 
-  if (elementParams.action && elementParams.action.library.split(' ')[0] === 'H5P.Chart' &&
+  if (elementParams.action && elementParams.action.library &&
+      elementParams.action.library.split(' ')[0] === 'H5P.Chart' &&
+      elementParams.action.params &&
       elementParams.action.params.graphMode === 'pieChart') {
     elementParams.width = elementParams.height / this.slideRatio;
   }

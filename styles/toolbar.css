@@ -1,4 +1,4 @@
-﻿.h5p-dragnbar {
+.h5p-dragnbar {
   height: 7%;
   background: transparent;
   position: absolute;
@@ -189,7 +189,8 @@
   content: "\f200";
 }
 /* H5P specific icons */
-.h5p-dragnbar-dragquestion-button:before {
+.h5p-dragnbar-dragquestion-button:before,
+.h5p-dragnbar-dragquestioncfrd-button:before {
   content: "\e991";
 }
 .h5p-dragnbar-blanks-button:before {

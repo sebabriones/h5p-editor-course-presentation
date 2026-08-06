@@ -2,7 +2,7 @@
   "title": "Course Presentation Editor (CFRD)",
   "majorVersion": 1,
   "minorVersion": 0,
-  "patchVersion": 0,
+  "patchVersion": 2,
   "runnable": 0,
   "machineName": "H5PEditor.CoursePresentationCFRD",
   "author": "CFRD-UDEC",
@@ -110,9 +110,9 @@
       "minorVersion": 8
     },
     {
-      "machineName": "H5P.DragQuestion",
+      "machineName": "H5P.DragQuestionCFRD",
       "majorVersion": 1,
-      "minorVersion": 14
+      "minorVersion": 0
     },
     {
       "machineName": "H5P.Summary",
