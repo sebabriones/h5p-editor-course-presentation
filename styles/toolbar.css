@@ -225,7 +225,8 @@
 .h5p-dragnbar-gotoslide-button:before {
   content: "\e602";
 }
-.h5p-dragnbar-singlechoiceset-button:before {
+.h5p-dragnbar-singlechoiceset-button:before,
+.h5p-dragnbar-singlechoicesetcfrd-button:before {
   content: "\e993";
 }
 .h5p-dragnbar-dialogcards-button:before {
