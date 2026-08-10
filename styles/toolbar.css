@@ -193,7 +193,8 @@
 .h5p-dragnbar-dragquestioncfrd-button:before {
   content: "\e991";
 }
-.h5p-dragnbar-blanks-button:before {
+.h5p-dragnbar-blanks-button:before,
+.h5p-dragnbar-advancedblankscfrd-button:before {
   content: "\e994";
 }
 .h5p-dragnbar-multichoice-button:before {
