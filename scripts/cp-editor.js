@@ -1039,7 +1039,7 @@ H5PEditor.CoursePresentationCFRD.prototype.addSlide = function (slideParams) {
   this.params.slides.splice(index, 0, slideParams);
   this.elements.splice(index, 0, []);
   this.cp.elementInstances.splice(index, 0, []);
-  this.cp.elementsAttached.splice(index, 0, []);
+  this.cp.elementsAttached.splice(index, 0, undefined);
   const slide = this.cp.addChild(slideParams, index);
 
   // Add slide with elements
