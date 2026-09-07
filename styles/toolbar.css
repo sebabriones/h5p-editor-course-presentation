@@ -215,7 +215,8 @@
   font-size: 1.3em;
   vertical-align: middle;
 }
-.h5p-dragnbar-markthewords-button:before {
+.h5p-dragnbar-markthewords-button:before,
+.h5p-dragnbar-markthewordscfrd-button:before {
   content: "\e601";
   font-size: 1.4em;
 }
@@ -296,7 +297,8 @@ ul:not(.h5p-dragnbar-li-ul) > .h5p-dragnbar-li > a.h5p-dragnbar-interactivevideo
 
 ul:not(.h5p-dragnbar-li-ul) > .h5p-dragnbar-li > a.h5p-dragnbar-table-button:before,
 ul:not(.h5p-dragnbar-li-ul) > .h5p-dragnbar-li > a.h5p-dragnbar-exportabletextarea-button:before,
-ul:not(.h5p-dragnbar-li-ul) > .h5p-dragnbar-li > a.h5p-dragnbar-markthewords-button:before {
+ul:not(.h5p-dragnbar-li-ul) > .h5p-dragnbar-li > a.h5p-dragnbar-markthewords-button:before,
+ul:not(.h5p-dragnbar-li-ul) > .h5p-dragnbar-li > a.h5p-dragnbar-markthewordscfrd-button:before {
   vertical-align: super;
 }
 
