@@ -1750,6 +1750,10 @@ H5PEditor.CoursePresentationCFRD.prototype.processElement = function (elementPar
     // Some sort of callback event thing
     elementInstance.onAdd(elementParams, slideIndex);
   }
+
+  // Ensure CFRD appearance from slide params is visible on the editor canvas
+  // (first mount and after library form is wired).
+  this.refreshEmbeddedElementAppearance(elementInstance, elementParams);
 };
 
 /**
@@ -1982,6 +1986,11 @@ H5PEditor.CoursePresentationCFRD.prototype.showElementForm = function (element, 
       element.children[i].validate();
     }
 
+    // Push nested library field params into the slide element before remount.
+    // Otherwise redraw can recreate the canvas instance without the latest
+    // appearance (values still land in content.json on full save / preview).
+    that.syncElementActionParams(element, elementParams);
+
     if (isContinuousText) {
       // Store complete CT on slide 0
       that.params.ct = that.ct.params.action.params.text;
@@ -2090,6 +2099,28 @@ H5PEditor.CoursePresentationCFRD.prototype.showElementForm = function (element, 
 };
 
 /**
+ * Copy the live Library field params into the slide element params.
+ * Keeps canvas remounts (Done) aligned with what the form just validated.
+ *
+ * @param {object} element Form element (has children from generateForm)
+ * @param {object} elementParams Slide element parameters
+ */
+H5PEditor.CoursePresentationCFRD.prototype.syncElementActionParams = function (element, elementParams) {
+  var libraryField;
+
+  if (!element || !elementParams) {
+    return;
+  }
+
+  libraryField = H5PEditor.findField('action', element);
+  if (!libraryField || !libraryField.params || !libraryField.params.library) {
+    return;
+  }
+
+  elementParams.action = H5P.cloneObject(libraryField.params, true);
+};
+
+/**
 * Redraw element.
 *
 * @param {jQuery} $wrapper Element container to be redrawn.
@@ -2103,9 +2134,14 @@ H5PEditor.CoursePresentationCFRD.prototype.redrawElement = function ($wrapper, e
   var elementsParams = this.params.slides[slideIndex].elements;
   var elements = this.elements[slideIndex];
   var elementInstances = this.cp.elementInstances[slideIndex];
+  var instance;
+  var $element;
+  var that = this;
 
   // Determine how many elements still need redrawal after this one
   repeat = (typeof repeat === 'undefined') ? elements.length - 1 - elementIndex : repeat;
+
+  this.syncElementActionParams(element, elementParams);
 
   if (elementParams.action && elementParams.action.library &&
       elementParams.action.library.split(' ')[0] === 'H5P.Chart' &&
@@ -2130,8 +2166,8 @@ H5PEditor.CoursePresentationCFRD.prototype.redrawElement = function ($wrapper, e
 
   // Update visuals
   $wrapper.remove();
-  var instance = this.cp.children[slideIndex].addChild(elementParams).instance;
-  var $element = this.cp.attachElement(elementParams, instance, this.cp.$current, slideIndex);
+  instance = this.cp.children[slideIndex].addChild(elementParams).instance;
+  $element = this.cp.attachElement(elementParams, instance, this.cp.$current, slideIndex);
 
   // Make sure we're inside the container
   this.fitElement($element, elementParams);
@@ -2142,7 +2178,9 @@ H5PEditor.CoursePresentationCFRD.prototype.redrawElement = function ($wrapper, e
     H5P.trigger(instance, 'resize');
   }
 
-  var that = this;
+  // Re-apply CFRD appearance from the synced params (embedded canvas remount).
+  this.refreshEmbeddedElementAppearance(instance, elementParams);
+
   if (repeat === elements.length - 1 - elementIndex) {
     setTimeout(function () {
       // Put focus back on element
@@ -2157,6 +2195,44 @@ H5PEditor.CoursePresentationCFRD.prototype.redrawElement = function ($wrapper, e
   if (repeat > 0) {
     repeat--;
     this.redrawElement(elements[elementIndex].$wrapper, elements[elementIndex], elementsParams[elementIndex], repeat);
+  }
+};
+
+/**
+ * Push latest action.params.appearance into a remounted child and refresh UI.
+ *
+ * @param {object} instance Runnable instance
+ * @param {object} elementParams Slide element parameters
+ */
+H5PEditor.CoursePresentationCFRD.prototype.refreshEmbeddedElementAppearance = function (instance, elementParams) {
+  var actionParams;
+
+  if (!instance || !elementParams || !elementParams.action || !elementParams.action.params) {
+    return;
+  }
+
+  actionParams = elementParams.action.params;
+
+  if (instance.options) {
+    if (actionParams.appearance) {
+      instance.options.appearance = H5P.jQuery.extend(true, {}, actionParams.appearance);
+    }
+    if (actionParams.overallFeedback !== undefined) {
+      instance.options.overallFeedback = H5P.jQuery.extend(true, {}, actionParams.overallFeedback);
+    }
+    // Drag Question keeps appearance under question.settings
+    if (actionParams.question && actionParams.question.settings && actionParams.question.settings.appearance &&
+        instance.options.question && instance.options.question.settings) {
+      instance.options.question.settings.appearance = H5P.jQuery.extend(
+        true,
+        {},
+        actionParams.question.settings.appearance
+      );
+    }
+  }
+
+  if (typeof instance.refreshAppearance === 'function') {
+    instance.refreshAppearance();
   }
 };
 
