@@ -174,6 +174,11 @@ H5PEditor.CoursePresentationCFRD.prototype.addElement = function (library, optio
           elementParams.height = 50;
           break;
 
+        case 'H5P.InteractiveSentence':
+          elementParams.width = 50;
+          elementParams.height = 50;
+          break;
+
         case 'H5P.Video':
           elementParams.width = 50;
           elementParams.height = 50.5553;
