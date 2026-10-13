@@ -194,6 +194,7 @@
   content: "\e991";
 }
 .h5p-dragnbar-blanks-button:before,
+.h5p-dragnbar-blankscfrd-button:before,
 .h5p-dragnbar-advancedblankscfrd-button:before,
 .h5p-dragnbar-interactivesentence-button:before {
   content: "\e994";
